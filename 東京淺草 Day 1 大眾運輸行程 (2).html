@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" class="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>東京淺草 Day 1 大眾運輸行程</title>
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<script>tailwind.config={darkMode:'class'}</script>
+<style type="text/tailwindcss">
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:dark}
+html{scroll-padding-top:170px}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@layer base{
+ body{@apply min-h-screen text-slate-200 antialiased font-sans;background:radial-gradient(60rem 40rem at 10% -10%,rgba(232,86,42,.35),transparent 60%),radial-gradient(50rem 40rem at 100% 20%,rgba(99,102,241,.3),transparent 60%),radial-gradient(50rem 40rem at 0% 100%,rgba(20,184,166,.22),transparent 60%),#0b0e17;background-attachment:fixed}
+ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:rgba(11,14,23,.85);backdrop-filter:blur(12px);z-index:10}
+ h1{@apply text-xl font-bold mb-2 bg-gradient-to-r from-orange-300 via-pink-300 to-indigo-300 bg-clip-text text-transparent}
+ h2{@apply text-base font-semibold text-slate-100 mt-7 mb-2 flex items-center gap-2 after:content-[''] after:h-px after:flex-1 after:bg-white/10}
+}
+@layer components{
+ header{@apply sticky z-[5] px-4 pt-3 pb-2 bg-slate-950/50 backdrop-blur-xl border-b border-white/10;top:env(safe-area-inset-top,0px)}
+ main{@apply max-w-3xl mx-auto px-4 pt-3 pb-12}
+ #q{@apply w-full px-4 py-2.5 rounded-xl text-base text-slate-100 bg-white/10 border border-white/15 placeholder:text-slate-400 outline-none transition duration-300 focus:ring-2 focus:ring-orange-400/70 focus:bg-white/15}
+ .chips{@apply flex gap-2 overflow-x-auto pt-2 pb-1}
+ .chip{@apply flex-none rounded-full px-3 py-1 text-sm text-slate-200 bg-white/10 border border-white/15 backdrop-blur transition duration-300 hover:bg-orange-500/80 hover:border-orange-400 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-orange-500/30 active:scale-95}
+ .card{@apply my-3 rounded-2xl p-4 bg-white/5 backdrop-blur-xl border border-white/10 shadow-xl shadow-black/30 transition duration-300 ease-out hover:-translate-y-1 hover:bg-white/10 hover:border-white/25 hover:shadow-2xl hover:shadow-orange-500/10;animation:rise .6s ease both}
+ .card p{@apply my-1.5 text-[15px] text-slate-300}
+ .card p b{@apply text-white}
+ .t{@apply flex flex-wrap items-center gap-2 font-bold text-slate-50}
+ .time{@apply min-w-[92px] text-orange-300 tabular-nums}
+ .tag{@apply text-xs font-semibold rounded-md px-2 py-0.5 bg-emerald-400/15 text-emerald-300 border border-emerald-300/20}
+ .btn{@apply inline-block mt-1.5 mr-1.5 px-3 py-1.5 rounded-lg text-sm text-white no-underline bg-gradient-to-r from-orange-500 to-pink-500 shadow-md shadow-orange-500/30 transition duration-300 hover:-translate-y-0.5 hover:scale-105 hover:shadow-lg hover:shadow-pink-500/40 active:scale-95}
+ .btn.o{@apply bg-none bg-white/5 text-orange-300 border border-orange-300/50 shadow-none hover:bg-orange-400/20 hover:text-orange-200}
+ mark{@apply bg-yellow-300/40 text-inherit rounded}
+ .warn{@apply border-l-4 border-l-orange-400}
+ .map{@apply overflow-x-auto}
+ input.h{@apply w-full px-3 py-2 rounded-lg text-[15px] text-slate-100 bg-white/10 border border-white/15 placeholder:text-slate-400 outline-none transition duration-300 focus:ring-2 focus:ring-orange-400/70}
+ #none{@apply hidden text-center text-slate-400 py-6}
+ .sw{@apply flex gap-2 my-2}
+ .sw button{@apply flex-1 py-2.5 rounded-xl text-[15px] text-slate-200 bg-white/5 backdrop-blur border border-white/15 transition duration-300 hover:bg-white/15 hover:-translate-y-0.5 active:scale-95}
+ .sw button.on{@apply text-white border-transparent bg-gradient-to-r from-orange-500 to-pink-500 shadow-lg shadow-orange-500/30}
+}
+@media(prefers-reduced-motion:reduce){.card,.btn,.chip{animation:none;transition:none}}
+</style>
+</head>
+<body>
+<header>
+<h1>🗼 東京淺草 Day 1：桃園 → 成田 → 淺草</h1>
+<input id="q" type="search" placeholder="搜尋關鍵字：電車、午餐、飯店、ROX、網址…" autocomplete="off">
+<div class="chips" id="chips"></div>
+</header>
+<main>
+
+<div class="card warn" data-k="須知 班次 時刻表 118年 2029">
+<p><b>先看這裡：</b>118年（2029）的班次尚未公布。以下時間以目前時刻表與常態班距推算，出發前 1–2 週請用 Jorudan／Navitime 輸入當天日期重新確認，並以航空公司公告的抵達時間為準。</p>
+</div>
+
+<h2>① 選擇你們的抵達情境</h2>
+<div class="sw"><button id="a" class="on">飛機 11:30 抵達</button><button id="b">飛機 12:30 抵達</button></div>
+<p style="color:var(--mu);font-size:14px;margin:0">切換後，下方時間會自動換成對應版本。</p>
+
+<h2>② 時間軸</h2>
+
+<div class="card" data-k="入境 機場 成田 第1航廈 Visit Japan Web 領行李 海關">
+<div class="t"><span class="time" data-a="11:30–12:45" data-b="12:30–13:45">11:30–12:45</span><span class="tag">步行</span> 抵達成田第1航廈・入境</div>
+<p><b>地點：</b>成田機場第1航廈（酷航使用南翼）。</p>
+<p><b>走法：</b>下機後跟著「入國審査 Immigration」指標 → 領行李 → 海關。出發前先在 Visit Japan Web 填好入境與海關資料，QR code 截圖存手機。</p>
+<a class="btn" href="https://vjw-lp.digital.go.jp/" target="_blank" rel="noopener">Visit Japan Web</a>
+<a class="btn o" href="https://www.narita-airport.jp/en/" target="_blank" rel="noopener">成田機場官網</a>
+</div>
+
+<div class="card" data-k="午餐 Kineya Mugimaru 機場 餐廳 日圓 1250">
+<div class="t"><span class="time" data-a="12:50–13:40" data-b="13:50–14:30">12:50–13:40</span><span class="tag">午餐</span> Kineya Mugimaru（成田機場第1航廈）</div>
+<p><b>走法：</b>出關後留在第1航廈內用餐，不用出航廈。樓層以航廈內導覽圖為準。</p>
+<p><b>費用：</b>約 ¥1,250／人（依你們原計劃）。</p>
+<p>B 情境（12:30 抵達）建議縮短為 30–40 分鐘，或買輕食帶上車，避免太晚到淺草。</p>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=Kineya+Mugimaru+Narita+Airport+Terminal+1" target="_blank" rel="noopener">Google 地圖</a>
+</div>
+
+<div class="card" data-k="電車 京成 Access Express 特急 搭車 月台 羽田 西馬込 淺草 班次 交通 票價 Suica">
+<div class="t"><span class="time" data-a="13:45–14:55" data-b="14:35–15:45">13:45–14:55</span><span class="tag">電車</span> 京成 Access Express（直達淺草）</div>
+<p><b>搭車地點：</b>成田機場第1航廈站（Narita Airport Terminal 1，KS42），在航廈地下層，跟著「電車 Train／京成」指標。</p>
+<p><b>搭哪班：</b>選「アクセス特急 Access Express」，行先為「羽田空港／西馬込」。<b>行先寫京成上野的不會到淺草，不要上。</b></p>
+<p><b>班次：</b>約每 20–40 分一班，一律是不對號座。到站後看電子看板挑最近的 Access Express 即可，不必預約。</p>
+<p><b>車程與票價：</b>約 60–75 分；約 ¥1,276（IC 卡）／¥1,290（紙票）。</p>
+<p><b>下車：</b>都營地下鐵「淺草站」（A18）。同一班車會從京成線直通到都營淺草線，中途不用換車。</p>
+<a class="btn" href="https://www.keisei.co.jp/keisei/tetudou/skyliner/us/directions/asakusa.php" target="_blank" rel="noopener">京成官方說明</a>
+<a class="btn o" href="https://world.jorudan.co.jp/mln/en/" target="_blank" rel="noopener">Jorudan 查班次</a>
+<a class="btn o" href="https://www.navitime.co.jp/" target="_blank" rel="noopener">Navitime</a>
+</div>
+
+<div class="card" data-k="飯店 住宿 入住 寄放行李 淺草 走路 地圖">
+<div class="t"><span class="time" data-a="15:00–15:30" data-b="16:00–16:30">15:00–15:30</span><span class="tag">步行</span> 前往住宿・寄放或入住</div>
+<p><b>走法：</b>從都營淺草站出站後，用 Google 地圖步行導航到住宿。在下面輸入住宿名稱或地址，按鈕會自動更新。</p>
+<input class="h" id="hotel" placeholder="輸入住宿名稱或地址（只存在你自己的手機）">
+<a class="btn" id="hotelMap" target="_blank" rel="noopener" href="#">從淺草站步行到住宿</a>
+<p>多數住宿 15:00 後才能入住，先寄放行李也可以。出發前請向住宿確認入住時間。</p>
+</div>
+
+<div class="card" data-k="ROX 購物 逛街 淺草 步行 商場">
+<div class="t"><span class="time" data-a="15:45–17:45" data-b="16:45–18:00">15:45–17:45</span><span class="tag">步行</span> 淺草ROX購物中心</div>
+<p><b>走法：</b>從住宿步行前往，約 10–15 分鐘（實際依住宿位置而定，以地圖為準）。</p>
+<p>營業時間請在出發前查官網，這份行程沒有查到 118年的時間。</p>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=Asakusa+ROX" target="_blank" rel="noopener">Google 地圖</a>
+<a class="btn o" href="https://www.rox.co.jp/" target="_blank" rel="noopener">ROX 官網</a>
+</div>
+
+<div class="card" data-k="晚餐 淺草うどん 烏龍麵 udon 日圓 1500">
+<div class="t"><span class="time" data-a="18:00–19:15" data-b="18:30–19:30">18:00–19:15</span><span class="tag">晚餐</span> 淺草うどん 東京本店</div>
+<p><b>費用：</b>約 ¥1,500／人（依你們原計劃）。</p>
+<p><b>走法：</b>從 ROX 步行，用 Google 地圖導航。</p>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=Asakusa+Udon+Tokyo+Main+Store" target="_blank" rel="noopener">Google 地圖</a>
+</div>
+
+<div class="card" data-k="回住宿 休息 夜晚 淺草寺 散步">
+<div class="t"><span class="time" data-a="19:30 後" data-b="19:45 後">19:30 後</span><span class="tag">步行</span> 回住宿休息</div>
+<p>體力還夠的話，可順路在淺草寺外圍散步，晚上人比較少。</p>
+</div>
+
+<h2>③ 路線圖</h2>
+<div class="card map" data-k="地圖 路線 站名 淺草 押上 青砥 高砂">
+<svg viewBox="0 0 640 110" width="100%" role="img" aria-label="成田機場到淺草的路線示意圖">
+<line x1="40" y1="50" x2="600" y2="50" stroke="#e8562a" stroke-width="6" stroke-linecap="round"/>
+<g fill="#fff" stroke="#e8562a" stroke-width="4"><circle cx="40" cy="50" r="9"/><circle cx="225" cy="50" r="7"/><circle cx="410" cy="50" r="7"/><circle cx="600" cy="50" r="9"/></g>
+<g font-size="14" text-anchor="middle" fill="currentColor"><text x="40" y="82">成田機場T1</text><text x="225" y="82">京成高砂</text><text x="410" y="82">押上</text><text x="600" y="82">淺草（都營）</text>
+<text x="132" y="36" font-size="12">京成線</text><text x="318" y="36" font-size="12">押上線</text><text x="505" y="36" font-size="12">都營淺草線</text></g>
+</svg>
+<p>同一班車直通，約 60–75 分，不用換車。</p>
+<a class="btn" href="https://www.google.com/maps/dir/?api=1&origin=Narita+Airport+Terminal+1+Station&destination=Asakusa+Station+Toei&travelmode=transit" target="_blank" rel="noopener">在 Google 地圖看電車路線</a>
+</div>
+
+<h2>④ 備案與注意事項</h2>
+<div class="card" data-k="備案 延誤 誤點 skyliner 天空 交通卡 IC Suica PASMO 備用">
+<p><b>航班延誤：</b>班次很多，晚到直接搭下一班 Access Express。不要買指定席車票，才不會浪費。</p>
+<p><b>想快一點：</b>也可搭 Skyliner 到京成上野（約 40 分），再換東京 Metro 銀座線到淺草。這樣約快 20 分，但要多付費並且要換車。</p>
+<p><b>交通卡：</b>三人各準備一張 IC 卡（Suica／PASMO，手機錢包也可），進出站直接刷。</p>
+<p><b>行李：</b>電車上行李要放在身邊或腳邊，尖峰時間盡量避開。</p>
+<a class="btn" href="https://www.flyscoot.com/" target="_blank" rel="noopener">酷航官網</a>
+<a class="btn o" href="https://www.kotsu.metro.tokyo.jp/eng/" target="_blank" rel="noopener">都營地下鐵</a>
+</div>
+
+<h2>⑤ 網址總整理</h2>
+<div class="card" data-k="網址 連結 官網 查詢 Visit Japan Web Jorudan Navitime 酷航 京成 都營 ROX 成田">
+<p>
+<a class="btn o" href="https://vjw-lp.digital.go.jp/" target="_blank" rel="noopener">Visit Japan Web</a>
+<a class="btn o" href="https://www.flyscoot.com/" target="_blank" rel="noopener">酷航</a>
+<a class="btn o" href="https://www.narita-airport.jp/en/" target="_blank" rel="noopener">成田機場</a>
+<a class="btn o" href="https://www.keisei.co.jp/keisei/tetudou/skyliner/us/directions/asakusa.php" target="_blank" rel="noopener">京成</a>
+<a class="btn o" href="https://www.kotsu.metro.tokyo.jp/eng/" target="_blank" rel="noopener">都營地下鐵</a>
+<a class="btn o" href="https://world.jorudan.co.jp/mln/en/" target="_blank" rel="noopener">Jorudan</a>
+<a class="btn o" href="https://www.navitime.co.jp/" target="_blank" rel="noopener">Navitime</a>
+<a class="btn o" href="https://www.rox.co.jp/" target="_blank" rel="noopener">淺草ROX</a>
+</p>
+</div>
+
+<div id="none">找不到相關內容，換個關鍵字試試。</div>
+</main>
+
+<script>
+var cards=[].slice.call(document.querySelectorAll('.card')),q=document.getElementById('q');
+var words=['機場','午餐','電車','飯店','ROX','晚餐','地圖','備案','網址'];
+var chips=document.getElementById('chips');
+words.forEach(function(w){var c=document.createElement('button');c.className='chip';c.textContent=w;c.onclick=function(){q.value=w;run();};chips.appendChild(c);});
+cards.forEach(function(c){c.dataset.o=c.innerHTML;});
+function esc(s){return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');}
+function run(){
+ var v=q.value.trim().toLowerCase(),n=0;
+ cards.forEach(function(c){
+  var txt=(c.textContent+' '+(c.dataset.k||'')).toLowerCase();
+  var hit=!v||txt.indexOf(v)>-1;
+  c.style.display=hit?'':'none';
+  if(hit)n++;
+ });
+ document.getElementById('none').style.display=n?'none':'block';
+ if(v){var first=cards.filter(function(c){return c.style.display!=='none';})[0];if(first)first.scrollIntoView({behavior:'smooth',block:'start'});}
+}
+q.addEventListener('input',run);
+function setMode(m){
+ document.getElementById('a').className=m==='a'?'on':'';
+ document.getElementById('b').className=m==='b'?'on':'';
+ [].forEach.call(document.querySelectorAll('.time'),function(t){t.textContent=t.dataset[m];});
+}
+document.getElementById('a').onclick=function(){setMode('a');};
+document.getElementById('b').onclick=function(){setMode('b');};
+var hi=document.getElementById('hotel'),hb=document.getElementById('hotelMap');
+function upd(){
+ var h=hi.value.trim();
+ hb.href='https://www.google.com/maps/dir/?api=1&origin=Asakusa+Station+Toei&destination='+encodeURIComponent(h||'Asakusa')+'&travelmode=walking';
+}
+try{hi.value=localStorage.getItem('hotel')||'';}catch(e){}
+hi.addEventListener('input',function(){try{localStorage.setItem('hotel',hi.value);}catch(e){}upd();});
+upd();
+</script>
+</body>
+</html>
